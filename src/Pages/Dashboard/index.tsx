@@ -2,6 +2,7 @@ import React, { useState, FormEvent } from 'react';
 import { EventEmitter } from 'stream';
 import api from '../../services/api';
 import Repository from '../Repository';
+import { FiChevronRight } from 'react-icons/fi';
 
 import { Title, Repositories, Form } from './style';
 
@@ -25,6 +26,7 @@ const Dashboard: React.FC = () => {
       const repository = response.data;
 
       setRepositories([...repositories, repository]);
+      setNewRepo('');
   }
 
   return (
@@ -38,15 +40,42 @@ const Dashboard: React.FC = () => {
 
       <Repositories>
 
-        {repositories.map(repository => (
-          <>
-            <img src={repository.owner.avatar_url} alt={repository.owner.login}/>
-            <div>
-              <strong>{repository.full_name}</strong>
-              <p>{repository.description}</p>
-            </div>
-          </>
-          ))}
+        {/**repositories.map(repository => (
+          <a key={repository.full_name} href="teste">
+              <img src={repository.owner.avatar_url} alt={repository.owner.login}/>
+              <div>
+                <strong>{repository.full_name}</strong>
+                <p>{repository.description}</p>
+              </div>
+          </a>
+        ))**/}
+
+          <a href="#">
+              <img src="https://avatars.githubusercontent.com/u/82897833?v=4" alt="Maria"/>
+              <div>
+                <strong>GitHubRepository</strong>
+                <p>Repositório</p>
+              </div>
+              <FiChevronRight size={20}/>
+          </a>
+
+          <a href="#">
+              <img src="https://avatars.githubusercontent.com/u/82897833?v=4" alt="Maria"/>
+              <div>
+                <strong>GitHubRepository</strong>
+                <p>Repositório</p>
+              </div>
+              <FiChevronRight size={20}/>
+          </a>
+
+          <a href="#">
+              <img src="https://avatars.githubusercontent.com/u/82897833?v=4" alt="Maria"/>
+              <div>
+                <strong>GitHubRepository</strong>
+                <p>Repositório</p>
+              </div>
+              <FiChevronRight size={20}/>
+          </a>
       </Repositories>
     </>
   );
